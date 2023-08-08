@@ -1,0 +1,114 @@
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@500&display=swap');
+
+    body{   
+        padding: 10px; 
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        font-family: 'Ubuntu', sans-serif;
+        background-image:url(https://img.freepik.com/vector-gratis/fondo-monocromatico-blanco-estilo-papel_52683-66443.jpg?w=2000) ;
+        background-size: 110%;
+    }
+
+    .a{
+        display: flex;
+        margin-left: -250%;
+    }
+
+    a{
+        text-decoration: none;
+        color: black;
+        display: flex;
+    }
+
+    table {
+        border: 1px solid #000;
+     }
+     th, td {
+        font-family: 'Heebo', sans-serif;
+        text-align: center;
+        vertical-align: top;
+        border: 1px solid #000;
+        border-collapse: collapse;
+        padding: 0.3em;
+        caption-side: bottom;
+     }
+
+     thead{
+        color: red;
+     }
+
+     #buscador{
+        box-shadow: 2px 4px 10px;
+        background-color: rgba(128, 128, 128, 0.562);
+        padding: 10px;
+        margin-right: -1050px;
+        margin-top: -20px;
+        margin-bottom: 100px;
+        width: 200px;
+        outline: none;
+        border: none;
+        border-bottom: 2px solid black;
+        font-family: 'Ubuntu', sans-serif;
+     }
+
+</style>
+
+<header>
+    <a href="/" class="a">VOLVER A PAGINA PRINCIPAL</a>
+
+    <input type="search" id="buscador">
+</header>
+
+
+<table>
+    <thead>
+        <tr>
+            <td>CODIGO PRODUCTO</td>
+            <td>NOMBRE PRODUCTO</td>
+            <td>CANTIDAD</td>
+            <td>PRECIO COMPRA</td>
+            <td>PRECIO VENTA</td>   
+        </tr>
+    </thead>
+    <tbody>
+        {% for producto in productos %}
+            <tr>
+                <td>{{ producto.0}}</td>
+                <td>{{ producto.1}}</td>
+                <td>{{ producto.2}}</td>
+                <td>{{ producto.3}}</td>
+                <td>{{ producto.4}}</td>
+                <td><a href="/editar/{{producto.0}}">EDITAR</a></td>
+            </tr>
+        {%endfor%}
+    </tbody>
+</table>
+
+<script>
+
+    
+document.getElementById('buscador').addEventListener('input', function() {
+    
+    let terminoBusqueda = this.value.toLowerCase();
+
+    
+    let filas = document.getElementsByTagName('tr');
+
+    
+    for (let i = 1; i < filas.length; i++) {
+        let fila = filas[i];
+        let textoFila = fila.textContent.toLowerCase();
+
+        
+        if (textoFila.includes(terminoBusqueda)) {
+            fila.style.display = '';
+        } else {
+            fila.style.display = 'none';
+        }
+    }
+});
+
+</script>

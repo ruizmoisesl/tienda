@@ -1,0 +1,106 @@
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@500&display=swap');
+
+    body{   
+        padding: 10px; 
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        font-family: 'Ubuntu', sans-serif;
+        background-image:url(https://img.freepik.com/vector-gratis/fondo-monocromatico-blanco-estilo-papel_52683-66443.jpg?w=2000) ;
+        background-size: 110%;
+    }
+
+    a{
+        text-decoration: none;
+        color: black;
+        display: flex;
+        margin-left:-85%;
+    }
+
+    table {
+        border: 1px solid #000;
+     }
+     th, td {
+        font-family: 'Heebo', sans-serif;
+        text-align: center;
+        vertical-align: top;
+        border: 1px solid #000;
+        border-collapse: collapse;
+        padding: 0.3em;
+        caption-side: bottom;
+     }
+
+     thead{
+        color: red;
+     }
+
+     #buscador{
+        box-shadow: 2px 4px 10px;
+        background-color: rgba(128, 128, 128, 0.562);
+        padding: 10px;
+        margin-right: -1050px;
+        margin-top: -20px;
+        margin-bottom: 100px;
+        width: 200px;
+        outline: none;
+        border: none;
+        border-bottom: 2px solid black;
+        font-family: 'Ubuntu', sans-serif;
+     }
+</style>
+
+<a href="/">VOLVER A PAGINA INICIAL</a>
+
+<input type="search" id="buscador">
+
+
+<table>
+    <thead>
+        <tr>
+            <td>CODIGO PRODUCTO</td>
+            <td>NOMBRE PRODUCTO</td>
+            <td>CANTIDAD</td>
+            <td>PRECIO COMPRA</td>
+            <td>PRECIO VENTA</td>   
+        </tr>
+    </thead>
+    <tbody>
+        {% for producto in productos %}
+            <tr>
+                <td>{{ producto.0}}</td>
+                <td>{{ producto.1}}</td>
+                <td>{{ producto.2}}</td>
+                <td>{{ producto.3}}</td>
+                <td>{{ producto.4}}</td>
+            </tr>
+        {%endfor%}
+    </tbody>
+</table>
+
+<script>
+
+    // Escuchar el evento "input" del campo de entrada
+document.getElementById('buscador').addEventListener('input', function() {
+    // Obtener el valor del término de búsqueda
+    let terminoBusqueda = this.value.toLowerCase();
+
+    // Obtener todas las filas de la tabla
+    let filas = document.getElementsByTagName('tr');
+
+    // Iterar sobre las filas (empezando desde 1 para omitir la fila de cabecera)
+    for (let i = 1; i < filas.length; i++) {
+        let fila = filas[i];
+        let textoFila = fila.textContent.toLowerCase();
+
+        
+        if (textoFila.includes(terminoBusqueda)) {
+            fila.style.display = '';
+        } else {
+            fila.style.display = 'none';
+        }
+    }
+});
+
+</script>

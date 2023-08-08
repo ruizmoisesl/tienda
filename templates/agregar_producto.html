@@ -1,0 +1,110 @@
+
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@500&display=swap');
+    body {
+        padding: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        font-family: 'Ubuntu', sans-serif;
+        background-image: url(https://img.freepik.com/vector-gratis/fondo-monocromatico-blanco-estilo-papel_52683-66443.jpg?w=2000);
+        background-size: 110%;
+    }
+
+
+    a {
+        text-decoration: none;
+        color: black;
+        display: flex;
+    }
+
+    form{
+        display: flex;
+        flex-direction: column;
+        margin-top: 10px;
+    }
+
+    button{
+        margin-left: 30%;
+        width: 90px;
+        height: 30px;
+        margin-top: 20px;
+        background-color: gray;
+        border: 2px solid black;
+        border-radius: 7px ;
+        font-family: 'Ubuntu', sans-serif;
+    }
+
+    label{
+        text-align: center;
+        margin: 10px;
+    }
+
+    input{
+        width: 100%;
+        height: 25;
+        border: none;
+        border-bottom: 1px solid black;
+        background: none;
+        box-shadow: 1px 1px 1px 1px ;
+        outline: none;
+        text-align: center;
+    }
+    
+    a{
+        margin-left: -250%;
+    }
+
+    #buscador{
+        box-shadow: 2px 4px 10px;
+        background-color: rgba(128, 128, 128, 0.562);
+        padding: 10px;
+        margin-right: -1050px;
+        margin-top: -20px;
+        margin-bottom: 100px;
+        width: 200px;
+        outline: none;
+        border: none;
+        border-bottom: 2px solid black;
+        font-family: 'Ubuntu', sans-serif;
+     }
+</style>
+
+<header>
+    <a href="/">VOLVER A PAGINA PRINCIPAL</a>
+</header>
+
+<form action="/agregar_producto" method="post">
+    <label for="">Nombre de Producto</label>
+    <input type="text" name="nombre_producto" autocomplete="off">
+    <label for="">Cantidad</label>
+    <input type="text" name="cantidad" autocomplete="off">
+    <label for="">Precio por el que se compro</label>
+    <input type="text" name="precio_compra" autocomplete="off">
+    <label for="">Precio Venta</label>
+    <input type="text" name="precio" autocomplete="off">
+    <button type="submit" id="btnGuardar">GUARDAR</button>
+</form>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+
+    btnGuardar= document.getElementById("btnGuardar")
+
+    btnGuardar.addEventListener("click",() => {
+
+        Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'Producto guardado correctamente',
+            showConfirmButton: false,
+            timer: 2500,
+            Width: 400
+          })
+    
+    })
+
+
+</script>
